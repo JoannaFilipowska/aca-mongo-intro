@@ -10,7 +10,7 @@ const getAll = () => {
 };
 
 const getOne = name => {
-  return UsersModel.findOne({});
+  return UsersModel.readOne(name);
   // find one user by name
 };
 
@@ -26,11 +26,12 @@ const createUser = user => {
 
 const updateUser = (name, updates) => {
   // use name as the query and updates for the updates
+  return UsersModel.updateOne(name);
 };
 
 const deleteUser = name => {
   // use name as the query
-  return UsersModel.delateOne({ name });
+  return UsersModel.delateOne(name);
 };
 
 module.exports = {
