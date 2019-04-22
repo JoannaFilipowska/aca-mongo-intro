@@ -7,8 +7,9 @@ router.get('/', (request, response) => {
     .then(results => response.json(results))
 })
 
+
 router.get('/:name', (request, response) => {
-  UsersController.getOne(/* name param */)
+  UsersController.getOne(request.name.prams)
     .then(result => {
       if (!result) throw new Error('No user found')
       response.json(result)

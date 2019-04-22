@@ -10,28 +10,31 @@ const getAll = () => {
 };
 
 const getOne = name => {
-  return UsersModel.readOne(name);
+  return UsersModel.create(name);
   // find one user by name
 };
 
 const createDefault = () => {
   // insert default user into db
-  return UsersModel.create(defaultUser);
+  return UsersModel.create({ name: defaultUser.name, age: defaultUser.age });
 };
 
 const createUser = user => {
   // insert user from POST request into db
-  return UsersModel.create(user);
+  return UsersModel.create({ name: user.name, age: user.age });
 };
 
 const updateUser = (name, updates) => {
   // use name as the query and updates for the updates
-  return UsersModel.updateOne(name);
+  return UsersModel.updateOne(
+    { name: name },
+    { $set: { name: updates.name, age: updates.age } }
+  );
 };
 
 const deleteUser = name => {
   // use name as the query
-  return UsersModel.delateOne(name);
+  return UsersModel.delateOne({ name: name });
 };
 
 module.exports = {
